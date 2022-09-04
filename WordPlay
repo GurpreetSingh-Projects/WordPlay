@@ -1,0 +1,42 @@
+class WordPlay {
+    static boolean isVowel(char ch) {
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I'
+                || ch == 'O' || ch == 'U') {
+            return true;
+        }
+        return false;
+    }
+
+    static StringBuilder replaceVowels(StringBuilder phrase, char ch) {
+        for (int a = 0; a < phrase.length(); a++) {
+            char temp = phrase.charAt(a);
+            boolean checkifVowel = isVowel(temp);
+            if (checkifVowel == true)
+                phrase.setCharAt(a, ch);
+        }
+        return phrase;
+
+    }
+
+    static StringBuilder emphasize(StringBuilder phrase, char ch) {
+        for (int a = 0; a < phrase.length(); a++) {
+            char temp = phrase.charAt(a);
+            if (temp == ch) {
+                if ((a + 1) % 2 == 0)
+                    phrase.setCharAt(a, '+');
+                else
+                    phrase.setCharAt(a, '*');
+
+            }
+        }
+
+        return phrase;
+    }
+
+    public static void main(String args[]) {
+        StringBuilder phrase = new StringBuilder("dna ctgaaactga");
+        char ch = 'a';
+        System.out.print(replaceVowels(phrase, ch));
+        System.out.print(emphasize(phrase, ch));
+    }
+}
